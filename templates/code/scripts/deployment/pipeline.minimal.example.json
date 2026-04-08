@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "description": "Minimal deployment pipeline example — not a production canon",
+  "scenarios": [
+    {
+      "id": "example_local",
+      "steps": [
+        {
+          "name": "compile_contracts",
+          "action": "hardhat_compile",
+          "validation": { "type": "artifacts_exist", "globs": ["artifacts/**/*.json"] }
+        }
+      ]
+    }
+  ]
+}

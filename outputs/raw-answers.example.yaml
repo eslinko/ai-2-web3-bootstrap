@@ -1,0 +1,83 @@
+# Пример raw answers — скопируйте в raw-answers.yaml и заполните
+meta:
+  project_name: "Example"
+  project_slug: "example"
+  interview_date: "2026-04-08"
+layers:
+  node: true
+  contracts: false
+  arweave_uploader: false
+  custom_gpt: true
+  scripts: false
+  wallet_signing: false
+  wallet_mock_runner: false # true если wallet.layer_mode: bundled_mock_runner
+integrations:
+  hmac: false
+  supabase: false
+  vault: false
+decisions:
+  auth.model: bearer_only
+  wallet.layer_mode: external_wallet_later # bundled_mock_runner | external_wallet_later | none
+  wallet.prototype_policy: fixed_single_user # при bundled_mock_runner
+  wallet.role: signing_companion # signing_companion | externalized_later
+  # wallet_strategy: ... # legacy; не использовать в новых интервью
+  # --- uploader.* (если layers.arweave_uploader: true) ---
+  # uploader.enabled: true
+  # uploader.mode: mock_only  # mock_only | real_publish | hybrid
+  # uploader.caller_auth_mode: shared_bearer  # shared_bearer | jwt_upload_token | mixed
+  # uploader.verification_mode: token_only  # signed_data_item_required | token_only | mixed
+  # uploader.publish_mode: bundle_relay  # bundle_relay | direct_tx | defined_later
+  # uploader.callback_mode: none  # backend_callback_required | optional | none
+  # uploader.payload_contract_mode: minimal  # strict | validated_upstream | minimal
+  # uploader.wallet_dependency_mode: mock_wallet_supported  # external_signer_required | mock_wallet_supported | defined_later
+  security.api_auth_mode: bearer
+  security.gpt_actions_protection: bearer
+  security.edge_auth_mode: none
+  security.upload_token_mode: none
+  security.wallet_auth_mode: none
+  security.arweave_signing_mode: external_signer_later
+  security.evm_signing_mode: external_wallet_later
+  security.secrets_source: env_only
+  gpt.enabled: true
+  gpt.elicitation_mode: mixed
+  gpt.output_structure_mode: strict_json
+  gpt.rulebook_mode: required
+  gpt.rulebook_source: single_document
+  gpt.backend_handoff_mode: service_mapped_json
+  gpt.domain_capture_type: ideas_and_desires
+  gpt.actions_integration: enabled
+  # --- scripts.* (если layers.scripts: true) ---
+  # scripts.enabled: true
+  # scripts.mode: minimal_helpers  # minimal_helpers | orchestration_scaffold | reference_only
+  # scripts.deploy_pattern: router_based  # router_based | simple_named_scripts | defined_later
+  # scripts.validation_pattern: none  # phase_based | minimal_checks | none
+  # scripts.shell_glue: enabled  # enabled | disabled
+  # scripts.deployment_spec: docs_only  # json_spec_enabled | docs_only | none
+  # scripts.tests_harness: exclude  # reference_only | include_minimal | exclude
+  # uploader.* ниже — только если layers.arweave_uploader: true
+  uploader.enabled: false
+  uploader.delivery_mode: bundled_module
+  uploader.mode: mock_only
+  uploader.caller_auth_mode: shared_bearer
+  uploader.verification_mode: token_only
+  uploader.publish_mode: bundle_relay
+  uploader.callback_mode: none
+  uploader.payload_contract_mode: minimal
+  uploader.wallet_dependency_mode: mock_wallet_supported
+  deployment.profile: local_only
+  storage.profile: mock_only  # или N/A если uploader false — уточнить в validation
+  contract.strategy: registry_scaffold_only  # или N/A
+  docs_depth: minimal
+channels:
+  api_only: true
+  gpt_actions: false
+  telegram: false
+  uploader_callbacks: false
+triage:
+  donor_residue_ignore: []
+  excluded_layers_note: ""
+# --- apply.* (v2.0, defaults допустимы) ---
+# apply.target_mode: new_project  # new_project | existing_repo | dry_run_only
+# apply.overwrite_policy: safe_no_overwrite  # safe_no_overwrite | replace_generated_only | defined_later
+# apply.bundled_copy_mode: copy_enabled  # copy_enabled | copy_disabled
+# apply.optional_scaffolds_mode: skip_optional  # skip_optional | include_optional | defined_later

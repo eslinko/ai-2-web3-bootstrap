@@ -1,0 +1,11 @@
+{
+  "name": "{{project_slug}}-arweave-uploader",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.mjs"
+  },
+  "dependencies": {
+    "fastify": "^5.0.0"
+  }
+}

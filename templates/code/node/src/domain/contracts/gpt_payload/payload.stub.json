@@ -1,0 +1,13 @@
+{
+  "_comment": "Contract stub for GPT strict JSON payload",
+  "payload_version": "v1",
+  "entity_type": "REPLACE_ME",
+  "operation_type": "REPLACE_ME",
+  "structured_payload": {},
+  "validation_metadata": {
+    "readiness_level": "REPLACE_ME"
+  },
+  "handoff_metadata": {
+    "handoff_mode": "service_mapped_json"
+  }
+}

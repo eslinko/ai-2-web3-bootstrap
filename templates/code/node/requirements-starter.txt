@@ -1,0 +1,5 @@
+# Минимальный набор для FastAPI-ноды (эталон: bot/requirements.txt — сузить под проект)
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+pydantic>=2.0.0
+python-dotenv>=1.0.0
